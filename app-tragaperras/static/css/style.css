@@ -1,0 +1,24 @@
+/* Estilos generales */
+body {
+    font-family: sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .container {
+    width: 500px;
+    margin: 50px auto;
+    text-align: center;
+  }
+  
+  /* Estilos para los rollos */
+  .reels {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .reels img {
+    width: 100px;
+    height: 100px;
+    
+  }  

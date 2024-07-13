@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tragamonedas - ¡Prueba tu suerte!</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>Máquina Tragamonedas</h1>
+
+  <div class="container">
+    <div class="reels">
+      <img src="{{ url_for('static', filename='img/' + reels[0] + '.png') }}" alt="Rodillo 1">
+      <img src="{{ url_for('static', filename='img/' + reels[1] + '.png') }}" alt="Rodillo 2">
+      <img src="{{ url_for('static', filename='img/' + reels[2] + '.png') }}" alt="Rodillo 3">
+    </div>
+
+    <div class="spin-button-container">
+      <button id="spin-button">¡Girar!</button>
+    </div>
+
+    <div class="info">
+      <p>Tiros: {{ spin_count }}</p>
+      {% if winning_combo %}
+        <p class="win">¡Ganaste! Combinación ganadora: {{ winning_combo }}</p>
+      {% else %}
+        <p class="message">{{ message }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
