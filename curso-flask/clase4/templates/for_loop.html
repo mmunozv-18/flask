@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos con mas Títulos Europeos</title>
+</head>
+<body>
+
+    <h1>Campeones Europeos</h1>
+    <h2>Equipos con mas Títulos Europeos:</h2>
+    <ul>
+        {% for team in teams %}
+            <li>
+                {{ team }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Campeones de la UEFA champions League</h2>
+    <ul>
+        {% for team, copas in teams_dic.items() %}
+            <li>
+                {{ team }} con {{ copas }} títulos
+            </li>
+        {% endfor %}
+    </ul>
+        
+</body>
+</html>
