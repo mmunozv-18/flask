@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de vCard QR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: grid;
+            grid-gap: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #5c67f2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #4a54e1;
+        }
+        .btn-group button {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Generador de QR para vCard</h2>
+        <form method="POST" action="/">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="organization">Organización:</label>
+            <input type="text" id="organization" name="organization">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" name="phone">
+
+            <label for="note">Nota:</label>
+            <textarea id="note" name="note" rows="4"></textarea>
+
+            <div class="btn-group">
+                <button type="submit">Generar</button>
+                <button type="button" onclick="resetForm()">Borrar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function resetForm() {
+            // Reset the form values
+            document.getElementById('name').value = '';
+            document.getElementById('organization').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('note').value = '';
+        }
+    </script>
+</body>
+</html>
