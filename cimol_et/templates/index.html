@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIMOL-ET´S</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>BASE DE DATOS DE ESPECIFICACIONES TECNICAS</h1>
+    <a href="{{ url_for('add') }}" class="add-button">Add New</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Vivienda</th>
+                <th>Código Partida</th>
+                <th>Descripción</th>
+                <th>Detalle</th>
+                <th>Características</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for et in ets %}
+            <tr>
+                <td>{{ et.vivienda }}</td>
+                <td>{{ et.codigopartida }}</td>
+                <td>{{ et.descripcion }}</td>
+                <td>{{ et.detalle }}</td>
+                <td>{{ et.caracteristicas }}</td>
+                <td>
+                    <a href="{{ url_for('edit', id=et.id) }}" class="edit-button">Edit</a>
+                    <a href="{{ url_for('delete', id=et.id) }}" class="delete-button" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit ETS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>{% if ets %}Edit{% else %}Add New{% endif %} ETS</h1>
+    <form action="{% if ets %}{{ url_for('edit', id=ets.id) }}{% else %}{{ url_for('add') }}{% endif %}" method="post">
+        <label for="vivienda">Vivienda:</label>
+        <input type="text" id="vivienda" name="vivienda" value="{% if ets %}{{ ets.vivienda }}{% endif %}" required>
+        <label for="codigopartida">Código Partida:</label>
+        <input type="text" id="codigopartida" name="codigopartida" value="{% if ets %}{{ ets.codigopartida }}{% endif %}" required>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" value="{% if ets %}{{ ets.descripcion }}{% endif %}" required>
+        <label for="detalle">Detalle:</label>
+        <textarea id="detalle" name="detalle" required>{% if ets %}{{ ets.detalle }}{% endif %}</textarea>
+        <label for="caracteristicas">Características:</label>
+        <textarea id="caracteristicas" name="caracteristicas" required>{% if ets %}{{ ets.caracteristicas }}{% endif %}</textarea>
+        <button type="submit">Save</button>
+    </form>
+    <a href="{{ url_for('index') }}" class="back-button">Back to List</a>
+</body>
+</html>
