@@ -1,0 +1,43 @@
+/* static/css/chat.css */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px); /* Ajusta la altura para el navbar */
+}
+
+#chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.input-area {
+    padding: 10px;
+}
+
+#user-input {
+    border-radius: 5px 0 0 5px;
+}
+
+#send-btn {
+    border-radius: 0 5px 5px 0;
+}
+
+.message {
+    padding: 15px;
+}
+
+.user-message {
+    text-align: right;
+}
+
+.bot-message {
+    text-align: left;
+}
+
+/* static/css/chat.css */
+.has-copy-button .copy-button {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 5px; /* Ajusta el margen superior según sea necesario */
+}

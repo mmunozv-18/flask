@@ -1,0 +1,184 @@
+/* static/css/style.css */
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --input-bg: #2a2a2a;
+    --border-color: #3a3a3a;
+    --accent-color: #4a90e2;
+    --error-color: #ff4d4d;
+    --code-bg: #2d2d2d;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.chat-container {
+    width: 90%;
+    max-width: 800px;
+    background-color: var(--input-bg);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    background-color: var(--accent-color);
+}
+
+.model-selection {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: var(--input-bg);
+}
+
+select {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+#chat-messages {
+    height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: var(--accent-color);
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--input-bg);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-weight: bold;
+}
+
+.input-area {
+    display: flex;
+    padding: 10px;
+    background-color: var(--input-bg);
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 5px 0 0 5px;
+}
+
+#send-btn {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+/* Estilos para el Markdown renderizado */
+.bot-message p {
+    margin: 0 0 10px 0;
+}
+
+.bot-message h1, .bot-message h2, .bot-message h3, .bot-message h4, .bot-message h5, .bot-message h6 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.bot-message pre {
+    background-color: var(--code-bg);
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.bot-message code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--code-bg);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.bot-message ul, .bot-message ol {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.bot-message blockquote {
+    border-left: 3px solid var(--accent-color);
+    padding-left: 10px;
+    margin: 10px 0;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .chat-container {
+        width: 95%;
+    }
+
+    .model-selection {
+        flex-direction: column;
+    }
+
+    select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Añade esto al final de tu archivo CSS existente */
+
+#clear-history-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#clear-history-btn:hover {
+    background-color: #3a80d2;
+}
+
+.system-message {
+    align-self: center;
+    background-color: var(--input-bg);
+    color: var(--accent-color);
+    font-style: italic;
+}

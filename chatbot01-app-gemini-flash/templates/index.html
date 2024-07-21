@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqk1w27K0bR3k7wluYQ+9D+j6/+7u9c0wzbdH+yH4NvpLLp9y7whTaOfhJwM7j/hHO99y2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center mb-4">Chatbot</h1>
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <div class="chat-container">
+                            <div class="chat-messages">
+                                <!-- Mensajes del chat se mostrarán aquí -->
+                            </div>
+                            <div class="chat-input">
+                                <form method="POST" action="/chat">
+                                    <select name="model" class="form-control mb-2">
+                                        {% for model_name, model_label in models.items() %}
+                                            <option value="{{ model_name }}">{{ model_label }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <textarea name="message" class="form-control" placeholder="Escribe tu mensaje..."></textarea>
+                                    <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-Fyq4SU1zFAIDvzhknP+8NpF+90n/gH+s/K/rL41BlE+zJ+ztztTcmg78L+u+9GP" crossorigin="anonymous"></script>
+    <script src="static/js/script.js"></script>
+</body>
+</html>

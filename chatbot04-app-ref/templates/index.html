@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Multimodelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="loader">
+        <img src="{{ url_for('static', filename='loader/loader.gif') }}" alt="Cargando...">
+    </div>
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">Chatbot Multimodelo</a>
+        <ul class="navbar-nav">
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="chat-container">
+        <h1>Chatbot Multimodelo</h1>
+        <div class="model-selection">
+            <select id="provider">
+                <option value="">Seleccione un proveedor</option>
+            </select>
+            <select id="model">
+                <option value="">Seleccione un modelo</option>
+            </select>
+        </div>
+        <div id="chat-messages"></div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje aquí...">
+            <button id="send-btn">Enviar</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

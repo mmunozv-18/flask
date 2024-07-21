@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Multi-Modelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Chatbot Multi-Modelo</h1>
+        <div class="chat-window">
+            <div id="chat-log">
+                <!-- Aquí se mostrarán los mensajes del chat -->
+            </div>
+            <div class="input-area">
+                <input type="text" id="mensaje-usuario" placeholder="Escribe tu mensaje...">
+                <button id="enviar-mensaje">Enviar</button>
+            </div>
+        </div>
+        <div class="model-selector">
+            <h3>Selecciona un modelo:</h3>
+            <select id="selector-modelo">
+                {% for modelo_id, modelo in modelos.items() %}
+                    <option value="{{ modelo_id }}" {% if modelo_id == modelo_seleccionado %}selected{% endif %}>
+                        {{ modelo.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#enviar-mensaje").click(enviarMensaje);
+            $("#mensaje-usuario").keypress(function(e) {
+                if (e.which == 13) {  // Enter key
+                    enviarMensaje();
+                }
+            });
+            $("#selector-modelo").change(cambiarModelo);
+        });
+
+        function enviarMensaje() {
+            var mensaje = $("#mensaje-usuario").val().trim();
+            if (mensaje === "") return;
+
+            $("#mensaje-usuario").val("");
+            mostrarMensaje(mensaje, "usuario");
+
+            $.ajax({
+                url: "/obtener_respuesta",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ "mensaje": mensaje }),
+                success: function(respuesta) {
+                    if (respuesta.error) {
+                        mostrarMensaje("Error: " + respuesta.error, "error");
+                    } else {
+                        mostrarMensaje(respuesta.respuesta, "modelo");
+                    }
+                },
+                error: function() {
+                    mostrarMensaje("Error en la solicitud.", "error");
+                }
+            });
+        }
+
+        function cambiarModelo() {
+            var nuevoModelo = $("#selector-modelo").val();
+            $.ajax({
+                url: "/cambiar_modelo",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ "modelo": nuevoModelo }),
+                success: function(respuesta) {
+                    if (respuesta.error) {
+                        alert("Error: " + respuesta.error);
+                    } else {
+                        $("#chat-log").empty(); // Limpiar el chat al cambiar de modelo
+                        mostrarMensaje(respuesta.mensaje, "info");
+                    }
+                },
+                error: function() {
+                    alert("Error en la solicitud.");
+                }
+            });
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            var claseMensaje = tipo === "usuario" ? "mensaje-usuario" : tipo === "error" ? "mensaje-error" : tipo === "info" ? "mensaje-info" : "mensaje-modelo";
+            $("#chat-log").append(
+                "<div class='mensaje " + claseMensaje + "'>" + mensaje + "</div>"
+            );
+            $("#chat-log").scrollTop($("#chat-log")[0].scrollHeight);
+        }
+    </script>
+</body>
+</html>
