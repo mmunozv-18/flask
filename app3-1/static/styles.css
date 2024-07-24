@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.div1 {
+    width: 25%;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div2 {
+    width: 75%;
+    background-color: lightgreen;
+    display: flex;
+    flex-direction: column;
+}
+
+.div3 {
+    height: 25%;
+    background-color: lightcoral;
+    padding: 20px;
+}
+
+.div4 {
+    height: 75%;
+    background-color: lightgoldenrodyellow;
+    padding: 20px;
+}
+
+.app-button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>App Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="div1">
+        <button id="btn-app1">App1</button>
+        <button id="btn-app2">App2</button>
+        <button id="btn-app3">App3</button>
+    </div>
+    <div id="div2">
+        <div id="div3">
+            <!-- Aquí se mostrará el resultado de app2 -->
+            <div id="resultado-app2"></div>
+        </div>
+        <div id="div4">
+            <!-- Aquí se mostrará el calendario de app3 -->
+            <div id="calendario-app3"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
